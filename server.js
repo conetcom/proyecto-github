@@ -6,13 +6,13 @@ const routes = require('./routes')
 
 const app = express()
 app.set('port', process.env.PORT || 9000)
-const dbOptions = {
+/*const dbOptions = {
     host: 'postgresql://wilmerm:z1rTQuZFDHDpI43f4M3mbSt73QXEA9zM@dpg-cu9q8shu0jms73fitbcg-a.oregon-postgres.render.com/informacion_piscina',
     port: 5432,
     user: 'wilmerm',
     password: 'z1rTQuZFDHDpI43f4M3mbSt73QXEA9zM',
     database: 'informacion_piscina'
-}
+}*/
 
 // middlewares -------------------------------------
 app.use(myconn(mysql, dbOptions, 'single'))
