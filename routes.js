@@ -15,7 +15,9 @@ const pool = new Pool({
 )
   
 routes.get('/', async(req, res)=>{
-        const infoPiscina = await pool.query('SELECT * FROM piscina WHERE id_lectura=req.body.id_lectura')
+    const data =req.body.id_lectura
+    console.log(data)
+        const infoPiscina = await pool.query('SELECT * FROM piscina WHERE id_lectura=data')
         if (err) return res.send("error consulta")
         res.json(infoPiscina.row[{}])
     })
