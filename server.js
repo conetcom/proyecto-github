@@ -29,7 +29,7 @@ app.use(express.json())
 // routes -------------------------------------------
 app.get('/', async(req, res)=>{
     const hora = await pool.query('SELECT NOW()')
-await pool.end()
+    pool.end()
     res.send(hora )
 })
 app.use('/api', routes)
