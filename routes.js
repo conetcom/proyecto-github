@@ -1,19 +1,14 @@
 const express = require('express')
 const routes = express.Router()
-
-routes.get('/', (req, res)=>{
-    req.getConnection((err, conn)=>{
-        if(err) return res.send(err)
-
-        conn.query('SELECT * FROM piscina', (err, rows)=>{
-            if(err) return res.send(err)
-
-            res.json(rows)
-        })
+  
+routes.get('/', async(req, res)=>{
+        const infoPiscina = await pool.query('SELECT * FROM piscina WHERE id_lectura=req.body.id_lectura')
+        console.log(infoPiscina.rows[{}])
+        res.send(
+            infoPiscina.rows{} )
     })
-})
-
-routes.post('/', (req, res)=>{
+      
+    routes.post('/', (req, res)=>{
     req.getConnection((err, conn)=>{
         if(err) return res.send(err)
         conn.query('INSERT INTO piscina set ?', [req.body], (err, rows)=>{
