@@ -1,12 +1,9 @@
 const express = require('express')
-const mysql = require('mysql')
-const myconn = require('express-myconnection')
-
-const routes = require('./routes')
-
-const app = express()
-app.set('port', process.env.PORT || 9000)
-const dbOptions = {
+const pg = require('pg') 
+const { Pool, Client } = pg
+//const mysql = require('mysql')
+//const myconn = require('express-myconnection')
+const pool = new Pool({
     url: 'postgresql://wilmerm:z1rTQuZFDHDpI43f4M3mbSt73QXEA9zM@dpg-cu9q8shu0jms73fitbcg-a/informacion_piscina',
     host: 'dpg-cu9q8shu0jms73fitbcg-a',
     port: 5432,
@@ -14,14 +11,26 @@ const dbOptions = {
     password: 'z1rTQuZFDHDpI43f4M3mbSt73QXEA9zM',
     database: 'informacion_piscina'
 }
+)
+
+const app = express()
+ 
+// you can also use async/await
+
+const routes = require('./routes')
+
+
+app.set('port', process.env.PORT || 9000)
 
 // middlewares -------------------------------------
-app.use(myconn(mysql, dbOptions, 'single'))
+//app.use(myconn(mysql, dbOptions, 'single'))
 app.use(express.json())
 
 // routes -------------------------------------------
-app.get('/', (req, res)=>{
-    res.send('Welcome to my API')
+app.get('/', async(req, res)=>{
+    const hora = await pool.query('SELECT NOW()')
+await pool.end()
+    res.send(hora )
 })
 app.use('/api', routes)
 
