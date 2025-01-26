@@ -1,21 +1,24 @@
 ###
-GET http://localhost:9000/api HTTP/1.1
+GET https://proyecto-github-yhpr.onrender.com/api  HTTP/1.1
 
 ###
-POST http://localhost:9000/api HTTP/1.1
+POST https://proyecto-github-yhpr.onrender.com/api HTTP/1.1
 Content-Type: application/json
 
 {
-    "titulo": "los 7 habitos d elas personas altamente efectivas",
-    "autor": "Stephen Covey",
-    "edicion": 7
+    "id_lectura": 4,
+    "id_cliente": 1,
+    "ph": 7.3,
+    "orp": 7.56,
+    "st_bomba" :"true",
+    "st_light":"false"
 }
 
 ###
-DELETE http://localhost:9000/api/2 HTTP/1.1
+DELETE https://proyecto-github-yhpr.onrender.com/api  HTTP/1.1
 
 ###
-PUT http://localhost:9000/api/1 HTTP/1.1
+PUT https://proyecto-github-yhpr.onrender.com/api  HTTP/1.1
 Content-Type: application/json
 
 {
