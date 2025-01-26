@@ -28,7 +28,7 @@ app.use(express.json())
 
 // routes -------------------------------------------
 app.get('/', async(req, res)=>{
-    const infoPiscina = await pool.query('SELECT * FROM piscina')
+    const infoPiscina = await pool.query('SELECT id_lectura==1 FROM piscina')
     console.log(infoPiscina)
     res.send(
         infoPiscina )
