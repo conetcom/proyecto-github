@@ -30,8 +30,7 @@ app.use(express.json())
 app.get('/', async(req, res)=>{
     const infoPiscina = await pool.query('SELECT * FROM piscina WHERE id_lectura=3')
     console.log(infoPiscina.rows[{}])
-    res.send(
-        infoPiscina )
+    res.json(infoPiscina.rows[{}])
 })
 app.use('/api', routes)
 

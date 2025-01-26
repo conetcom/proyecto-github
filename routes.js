@@ -4,8 +4,7 @@ const routes = express.Router()
 routes.get('/', async(req, res)=>{
         const infoPiscina = await pool.query('SELECT * FROM piscina WHERE id_lectura=req.body.id_lectura')
         if (err) return res.send(err)
-        res.send(
-            infoPiscina)
+        res.json(infoPiscina.row[{}])
     })
       
     routes.post('/', (req, res)=>{
