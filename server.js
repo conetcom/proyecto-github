@@ -28,10 +28,11 @@ app.use(express.json())
 
 // routes -------------------------------------------
 app.get('/', async(req, res)=>{
-    const hora = await pool.query('SELECT NOW()')
-    //pool.end()
+    const infoPiscina = await pool.query('SELECT * FROM piscina')
+    await pool.end()
+    console.log(infoPiscina)
     res.send(
-        {pong: hora.rows[0].now} )
+        infoPiscina )
 })
 app.use('/api', routes)
 
